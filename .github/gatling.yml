@@ -1,0 +1,27 @@
+name: Gatling Tests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn clean install -DskipTests=true
+
+      - name: Run Gatling tests - Simulation 0
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.EmployerListSimulation
+
+      - name: Run Gatling tests - Simulation 1
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.GetBookedCoursesSimulation
