@@ -24,8 +24,7 @@ It includes:
 2. Choose a simulation number and ENTER:
 ```java
  [0] socialcarepassport.EmployerListSimulation
- [1] socialcarepassport.LoginSimulation
- [2] socialcarepassport.GetBookedCoursesSimulation
+ [1] socialcarepassport.GetBookedCoursesSimulation
 ```
 3. Select run description (optional)
 ```java
