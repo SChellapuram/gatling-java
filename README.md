@@ -1,5 +1,7 @@
 Gatling Java Project
 ============================================
+![load](https://github.com/SChellapuram/gatling-java/assets/148459324/0e1859a4-634c-4d9c-93b2-d19ffe542abe)
+
 
 Documentation
 [refer Gatling website](https://gatling.io/docs/current/extensions/maven_plugin/) for usage. 
@@ -34,6 +36,8 @@ Choose any description(example: Login Test) and ENTER
 ```java
 Find gatling reports under: '/target/gatling' or check console for the reports link
 ```
+<img width="1428" alt="Screenshot 2024-01-03 at 19 48 11" src="https://github.com/SChellapuram/gatling-java/assets/148459324/dcbf2459-1572-41c9-9ec0-70f0ce6466ba">
+
 
 ### Useful terms
 
