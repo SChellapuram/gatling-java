@@ -35,10 +35,21 @@ public class DownloadTrainingRecodsSimulation extends Simulation {
                             .get("/qa/training-record/download?courseId[]=9659140C-07C5-4740-96A1-70369BDF77DF&courseId[]=2A1156EA-5A23-4724-9A01-6882A57B4612")
                             .headers(headers)
                             .check(status().is(200))
-            );
-
+                            .check(bodyString().saveAs("DownloadRecords"))
+                            .check(regex("The Oliver McGowan Mandatory Training on Learning Disability and Autism.pdf").find().exists())
+                            .check(regex("Level 2 Certificate in Dementia Care.pdf").find().exists())
+            )
+            .pause(2).exec(session -> {
+                String downloadedRecords = session.get("DownloadRecords");
+                System.out.println("Show me downloaded training records list: " + downloadedRecords);
+                return session;
+            });
 
     {
-        setUp(scn.injectOpen(atOnceUsers(1))).protocols(httpProtocol);
+        setUp(
+                scn.injectOpen(
+                        constantUsersPerSec(1).during(1)
+                )
+        ).protocols(httpProtocol);
     }
 }

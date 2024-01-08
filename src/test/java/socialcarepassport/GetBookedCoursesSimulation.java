@@ -32,29 +32,39 @@ public class GetBookedCoursesSimulation extends Simulation {
                             .check(status().is(200))
             )
             .exec(session -> {
+                // Check if UserId exists in the session
                 boolean userIdExists = session.contains("UserId");
                 if (!userIdExists) {
-                    System.out.println("Assertion failed: 'userId' does not exist");
+                    System.out.println("Assertion failed: 'UserId' does not exist");
                     session.markAsFailed();
                 }
+
+                // Retrieve and print BookedCourseList
+                String bookedCourseList = session.get("BookedCourseList");
+                System.out.println("Booked Course List: " + bookedCourseList);
                 return session;
             });
 
     {
-        setUp(scn.injectOpen(rampUsers(10).during(10))).protocols(httpProtocol);
-
-        /*
-        rampUsersPerSec(10).to(20).during(1800): This ramps users from 10 to 20 users per second over a period of 30 minutes (1800 seconds).
-        constantUsersPerSec(20).during(900): After reaching the peak rate of 20 users per second, this maintains a constant load of 20 users per second for the remaining 15 minutes (900 seconds) of the total duration.
+        /**
+         * rampUsersPerSec(rate1).to.(rate2).during(duration): Injects users from starting rate to target rate, defined in users per second, during a given duration. Users will be injected at regular intervals.
+         * constantUsersPerSec(rate).during(duration): Injects users at a constant rate, defined in users per second, during a given duration. Users will be injected at regular intervals.
          */
 
         /*
         setUp(
                 scn.injectOpen(
-                        rampUsersPerSec(10).to(20).during(1800), // Ramps users from 10 to 20 per second over 30 mins (1800 secs)
-                        constantUsersPerSec(20).during(900) // Maintains 20 users per second for the remaining 15 mins (900 secs)
-                ).protocols(httpProtocol)
+                        rampUsersPerSec(1).to(9).during(300), // Ramp up from 1 to 9 users per second over 5 minutes
+                        constantUsersPerSec(17).during(1200), // Maintain a constant rate of 16 users per second for 20 minutes
+                        rampUsers(9).during(300) // Ramp down maintaining 9 users per second for 5 minutes
+              ).protocols(httpProtocol)
         );
          */
+
+        setUp(
+                scn.injectOpen(
+                        constantUsersPerSec(1).during(1)
+                )
+        ).protocols(httpProtocol);
     }
 }

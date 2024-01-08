@@ -23,11 +23,6 @@ public class EmployerListSimulation extends Simulation {
 
     private ScenarioBuilder createScenario() {
 
-        HttpRequestActionBuilder getOrgListRequest = http("Get Org List")
-                .get("/qa/organisation/list")
-                .check(bodyString().saveAs("OrgResponse"))
-                .check(status().is(200));
-
         HttpRequestActionBuilder getEmpListRequest = http("Get Emp List")
                 .get("/qa/organisation/employment/list")
                 .check(bodyString().saveAs("EmpResponse"))
@@ -35,11 +30,14 @@ public class EmployerListSimulation extends Simulation {
                 .check(status().is(200));
 
         return scenario("Get EmployerList Scenario")
-                .exec(getOrgListRequest)
                 .exec(getEmpListRequest)
                 .exec(session -> {
                     boolean roleExists = session.contains("EmployeeRoleExists");
                     System.out.println("'role' key exists: " + roleExists);
+
+                    // Retrieve and print Emp List
+                    String empList = session.get("EmpResponse");
+                    System.out.println("Get Emp List: " + empList);
                     return session;
                 });
     }
@@ -47,6 +45,15 @@ public class EmployerListSimulation extends Simulation {
 
     {
         ScenarioBuilder scenario = createScenario();
-        setUp(scenario.injectOpen(rampUsers(10).during(10))).protocols(httpProtocol);
+        setUp(
+                scenario.injectOpen(
+                        constantUsersPerSec(1).during(1)
+                       /*
+                        rampUsersPerSec(1).to(9).during(150), // Ramp up from 1 to 9 users per second over 5 minutes
+                        constantUsersPerSec(17).during(600), // Maintain a constant rate of 16 users per second for 20 minutes
+                        rampUsers(9).during(150) // Ramp down maintaining 9 users per second for 5 minutes
+                        */
+                )
+        ).protocols(httpProtocol);
     }
 }
