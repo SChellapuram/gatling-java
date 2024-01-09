@@ -28,16 +28,22 @@ jobs:
         run: mvn clean install -DskipTests=true
 
       - name: Run Gatling tests - Simulation 0
-        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.CreateUserSimulation
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.CreateNotificationSimulation
 
       - name: Run Gatling tests - Simulation 1
-        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.DownloadTrainingRecodsSimulation
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.GetBookedCoursesSimulation
 
       - name: Run Gatling tests - Simulation 2
-        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.EmployerListSimulation
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.GetDownloadTrainingRecordSimulation
 
       - name: Run Gatling tests - Simulation 3
-        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.GetBookedCoursesSimulation
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.GetEmployerListSimulation
+
+      - name: Run Gatling tests - Simulation 4
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.GetNotificationsByCurrentUser
+
+      - name: Run Gatling tests - Simulation 5
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.PostCreateUserSimulation
 
       - name: Archive Gatling Reports
         uses: actions/upload-artifact@v2
