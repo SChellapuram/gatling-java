@@ -28,12 +28,15 @@ jobs:
         run: mvn clean install -DskipTests=true
 
       - name: Run Gatling tests - Simulation 0
-        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.DownloadTrainingRecodsSimulation
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.CreateUserSimulation
 
       - name: Run Gatling tests - Simulation 1
-        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.EmployerListSimulation
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.DownloadTrainingRecodsSimulation
 
       - name: Run Gatling tests - Simulation 2
+        run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.EmployerListSimulation
+
+      - name: Run Gatling tests - Simulation 3
         run: mvn gatling:test -Dgatling.simulationClass=socialcarepassport.GetBookedCoursesSimulation
 
       - name: Archive Gatling Reports

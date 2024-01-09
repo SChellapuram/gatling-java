@@ -6,15 +6,13 @@ Gatling Java Project
 Documentation
 [refer Gatling website](https://gatling.io/docs/current/extensions/maven_plugin/) for usage. 
 
-This project is written in Java,
-
-It includes:
+This project is written in Java and includes:
 
 * [Maven Wrapper](https://maven.apache.org/wrapper/)
 * Minimal `pom.xml` file
 * Latest version of `io.gatling:gatling-maven-plugin`
 * Sample [Simulation](https://gatling.io/docs/gatling/reference/current/general/concepts/#simulation) class,
-  demonstrating sufficient Gatling functionality
+  demonstrating various Gatling functionalities
 
 ## How to run 
 1. Right-click on the 'Engine' class and select
@@ -23,9 +21,10 @@ It includes:
 ```
 2. Choose a simulation number and ENTER:
 ```java
- [0] socialcarepassport.DownloadTrainingRecodsSimulation
- [1] socialcarepassport.EmployerListSimulation
- [2] socialcarepassport.GetBookedCoursesSimulation
+  [0] socialcarepassport.CreateUsersSimualtion
+  [1] socialcarepassport.DownloadTrainingRecodsSimulation
+  [2] socialcarepassport.EmployerListSimulation
+  [3] socialcarepassport.GetBookedCoursesSimulation
 ```
 3. Select run description (optional)
 ```java
