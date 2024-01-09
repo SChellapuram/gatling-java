@@ -21,10 +21,12 @@ This project is written in Java and includes:
 ```
 2. Choose a simulation number and ENTER:
 ```java
-  [0] socialcarepassport.CreateUsersSimualtion
-  [1] socialcarepassport.DownloadTrainingRecodsSimulation
-  [2] socialcarepassport.EmployerListSimulation
-  [3] socialcarepassport.GetBookedCoursesSimulation
+[0] socialcarepassport.CreateNotificationSimulation
+[1] socialcarepassport.GetBookedCoursesSimulation
+[2] socialcarepassport.GetDownloadTrainingRecordSimulation
+[3] socialcarepassport.GetEmployerListSimulation
+[4] socialcarepassport.GetNotificationsByCurrentUser
+[5] socialcarepassport.PostCreateUserSimulation
 ```
 3. Select run description (optional)
 ```java

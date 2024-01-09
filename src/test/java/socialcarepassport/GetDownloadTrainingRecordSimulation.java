@@ -8,7 +8,7 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class DownloadTrainingRecodsSimulation extends Simulation {
+public class GetDownloadTrainingRecordSimulation extends Simulation {
     private static final String BASE_URL = "https://38v0wv1juh.execute-api.eu-west-2.amazonaws.com";
 
     private HttpProtocolBuilder httpProtocol = http
@@ -39,7 +39,7 @@ public class DownloadTrainingRecodsSimulation extends Simulation {
                             .check(regex("The Oliver McGowan Mandatory Training on Learning Disability and Autism.pdf").find().exists())
                             .check(regex("Level 2 Certificate in Dementia Care.pdf").find().exists())
             )
-            .pause(2).exec(session -> {
+            .pause(5).exec(session -> {
                 String downloadedRecords = session.get("DownloadRecords");
                 System.out.println("Show me downloaded training records list: " + downloadedRecords);
                 return session;
