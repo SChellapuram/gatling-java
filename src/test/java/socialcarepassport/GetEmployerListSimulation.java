@@ -48,7 +48,8 @@ public class GetEmployerListSimulation extends Simulation {
         setUp(
                 scenario.injectOpen(
                         constantUsersPerSec(1).during(1)
-                       /*
+
+                        /*
                         rampUsersPerSec(1).to(9).during(150), // Ramp up from 1 to 9 users per second over 5 minutes
                         constantUsersPerSec(17).during(600), // Maintain a constant rate of 16 users per second for 20 minutes
                         rampUsers(9).during(150) // Ramp down maintaining 9 users per second for 5 minutes

@@ -14,6 +14,16 @@ This project is written in Java and includes:
 * Sample [Simulation](https://gatling.io/docs/gatling/reference/current/general/concepts/#simulation) class,
   demonstrating various Gatling functionalities
 
+## DPS API Services
+```java
+1. User Service 
+2. Notification Service 
+3. Training Service
+4. Resource Service        
+5. Organisation Service 
+6. Asset Service 
+```
+
 ## How to run 
 1. Right-click on the 'Engine' class and select
 ```jshelllanguage
@@ -26,7 +36,9 @@ This project is written in Java and includes:
 [2] socialcarepassport.GetDownloadTrainingRecordSimulation
 [3] socialcarepassport.GetEmployerListSimulation
 [4] socialcarepassport.GetNotificationsByCurrentUser
-[5] socialcarepassport.PostCreateUserSimulation
+[5] socialcarepassport.PostCreateCourseSimulation
+[6] socialcarepassport.PostCreateUserSimulation
+[7] socialcarepassport.UploadPhotoSimulation
 ```
 3. Select run description (optional)
 ```java
