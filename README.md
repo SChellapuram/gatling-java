@@ -1,4 +1,4 @@
-Gatling Java Project
+Gatling Performance Testing
 ============================================
 ![load](https://github.com/SChellapuram/gatling-java/assets/148459324/0e1859a4-634c-4d9c-93b2-d19ffe542abe)
 
